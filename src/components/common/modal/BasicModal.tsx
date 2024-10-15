@@ -30,9 +30,13 @@ export default function BasicModal({
         exit={{ opacity: 0, transition: { duration: 0, delay: 0.1 } }}
       >
         {/* title */}
-        <div className="font-bold">{title}</div>
+        <div className="font-bold break-keep whitespace-normal">{title}</div>
         {/* information text */}
-        {information && <div className="text-sm">{information}</div>}
+        {information && (
+          <div className="text-sm break-keep whitespace-normal">
+            {information}
+          </div>
+        )}
         {buttonType === "one" && (
           <motion.button
             className="w-full text-end font-bold text-blue-500 active:text-blue-900"
