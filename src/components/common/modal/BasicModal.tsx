@@ -1,3 +1,4 @@
+import { scale, spring } from "@/animation/style";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
@@ -15,20 +16,14 @@ type ModalProps = {
 const modalVariants = {
   start: {
     opacity: 0,
-    scale: 0.8,
+    ...scale.small,
   },
   end: {
     opacity: 1,
-    scale: 1,
-    transition: {
-      type: "spring",
-      duration: 0.5,
-      bounce: 0.5,
-    },
-    exit: {
-      opacity: 0,
-    },
+    ...scale.normal,
+    transition: spring.medium,
   },
+  exit: {},
 };
 
 export default function BasicModal({
@@ -82,18 +77,18 @@ export default function BasicModal({
         )}
         {/* action two button */}
         {buttonType === "two" && (
-          <div className="flex w-full justify-between gap-5">
+          <div className="relative flex w-full justify-between gap-5">
             <motion.button
-              className="h-12 w-full rounded-xl bg-gray-200 font-bold"
+              className="h-12 w-full rounded-2xl bg-gray-200 font-bold"
               onClick={cancel}
-              whileTap={{ scale: 0.95 }}
+              whileTap={scale.semiSmall}
             >
               {secondary}
             </motion.button>
             <motion.button
-              className="h-12 w-full rounded-xl bg-black font-bold text-white"
+              className="h-12 w-full rounded-2xl bg-black font-bold text-white"
               onClick={confirm}
-              whileTap={{ scale: 0.95 }}
+              whileTap={scale.semiSmall}
             >
               {primary}
             </motion.button>

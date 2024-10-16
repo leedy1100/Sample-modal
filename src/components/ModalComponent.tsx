@@ -17,7 +17,7 @@ export default function ModalComponent() {
   };
 
   const goSite = (type: string) => {
-    closeModal(type);
+    // window.location.href = "https://www.naver.com";
   };
 
   const closeModal = (type: string) => {
@@ -40,7 +40,7 @@ export default function ModalComponent() {
     <div>
       <div className="flex gap-4">
         <button
-          className="rounded bg-gray-200 p-2 active:bg-gray-400"
+          className="font- rounded bg-gray-200 p-2 active:bg-gray-400"
           onClick={() => setIsThree(true)}
         >
           two button modal open(확인/이동)
@@ -80,7 +80,7 @@ export default function ModalComponent() {
         )}
         {isThree && (
           <BasicModal
-            confirm={() => cancel("three")}
+            confirm={() => goSite("three")}
             cancel={() => cancel("three")}
             title="다음 절차 진행 모달입니다."
             information="지금 절차 진행 시 우측 버튼, 나중에 진행을 원한다면 좌측 버튼을 눌러주세요."
