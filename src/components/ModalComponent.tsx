@@ -40,19 +40,19 @@ export default function ModalComponent() {
     <div>
       <div className="flex gap-4">
         <button
-          className="bg-gray-200 rounded p-2 active:bg-gray-400"
+          className="rounded bg-gray-200 p-2 active:bg-gray-400"
           onClick={() => setIsThree(true)}
         >
           two button modal open(확인/이동)
         </button>
         <button
-          className="bg-gray-200 rounded p-2 active:bg-gray-400"
+          className="rounded bg-gray-200 p-2 active:bg-gray-400"
           onClick={() => setIsTwo(true)}
         >
           two button modal open(취소/확인)
         </button>
         <button
-          className="bg-gray-200 rounded p-2 active:bg-gray-400"
+          className="rounded bg-gray-200 p-2 active:bg-gray-400"
           onClick={() => setIsOne(true)}
         >
           one button modal open

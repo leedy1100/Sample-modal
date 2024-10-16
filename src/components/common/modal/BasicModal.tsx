@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
 
@@ -11,6 +12,25 @@ type ModalProps = {
   primary?: string;
 };
 
+const modalVariants = {
+  start: {
+    opacity: 0,
+    scale: 0.8,
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+      bounce: 0.5,
+    },
+    exit: {
+      opacity: 0,
+    },
+  },
+};
+
 export default function BasicModal({
   confirm,
   cancel,
@@ -21,22 +41,37 @@ export default function BasicModal({
   primary = "확인",
 }: ModalProps) {
   return (
-    <div className="w-screen h-screen fixed top-0 left-0 flex justify-center items-center z-10">
-      <div className="w-screen h-screen absolute top-0 left-0 bg-black bg-opacity-50"></div>
+    <div className="fixed left-0 top-0 z-10 flex h-screen w-screen items-center justify-center">
+      <div className="absolute left-0 top-0 h-screen w-screen bg-black bg-opacity-50"></div>
       <motion.div
-        className="flex flex-col justify-center items-center gap-5 w-[300px] min-h-[120px] bg-white rounded-2xl z-[11] mx-10 p-5 shadow-[0px_0px_10px_0px_rgba(0,0,0,0.3)]"
-        initial={{ scale: 0.9 }}
-        animate={{ scale: 1 }}
-        exit={{ opacity: 0, transition: { duration: 0, delay: 0.1 } }}
+        className={clsx(
+          // Z-index
+          "z-[11]",
+          // 여백 및 간격
+          "mx-10 gap-5 p-5",
+          // 레이아웃 관련 클래스
+          "flex flex-col items-center justify-center",
+          // 크기 관련 클래스
+          "min-h-[120px] w-[300px] rounded-2xl",
+          // 색상 관련 클래스
+          "bg-white text-gray-700",
+          // 쉐도우
+          "shadow-[0px_0px_10px_0px_rgba(0,0,0,0.3)]",
+        )}
+        variants={modalVariants}
+        initial="start"
+        animate="end"
+        exit="exit"
       >
         {/* title */}
-        <div className="font-bold break-keep whitespace-normal">{title}</div>
+        <div className="whitespace-normal break-keep font-bold">{title}</div>
         {/* information text */}
         {information && (
-          <div className="text-sm break-keep whitespace-normal">
+          <div className="whitespace-normal break-keep text-sm">
             {information}
           </div>
         )}
+        {/* action one button */}
         {buttonType === "one" && (
           <motion.button
             className="w-full text-end font-bold text-blue-500 active:text-blue-900"
@@ -45,20 +80,20 @@ export default function BasicModal({
             {primary}
           </motion.button>
         )}
-        {/* action button */}
+        {/* action two button */}
         {buttonType === "two" && (
-          <div className="flex gap-5">
+          <div className="flex w-full justify-between gap-5">
             <motion.button
-              className="font-bold w-[120px] h-12 bg-gray-200 rounded-xl"
+              className="h-12 w-full rounded-xl bg-gray-200 font-bold"
               onClick={cancel}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.95 }}
             >
               {secondary}
             </motion.button>
             <motion.button
-              className="font-bold w-[120px] h-12 bg-black text-white rounded-xl"
+              className="h-12 w-full rounded-xl bg-black font-bold text-white"
               onClick={confirm}
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.95 }}
             >
               {primary}
             </motion.button>

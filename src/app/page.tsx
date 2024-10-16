@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex flex-col items-center gap-10">
-        <h1 className="text-3xl font-bold mt-10">Sample Modal</h1>
+        <h1 className="mt-10 text-3xl font-bold">Sample Modal</h1>
         <ModalComponent />
       </div>
     </div>
