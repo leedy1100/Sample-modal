@@ -40,23 +40,23 @@ const delay = {
 const duration = {
   none: { duration: 0.0 },
   extraShort: { duration: 0.1 },
-  short: { duration: 0.3 },
-  semiShort: { duration: 0.5 },
-  medium: { duration: 0.7 },
-  semiLong: { duration: 0.9 },
-  long: { duration: 1.1 },
-  extraLong: { duration: 1.3 },
+  short: { duration: 0.195 },
+  semiShort: { duration: 0.225 },
+  medium: { duration: 0.3 },
+  semiLong: { duration: 0.375 },
+  long: { duration: 0.4 },
+  extraLong: { duration: 1 },
 };
 
 const scale = {
   none: { scale: 0.0 },
-  extraSmall: { scale: 0.5 },
-  small: { scale: 0.7 },
-  semiSmall: { scale: 0.9 },
-  normal: { scale: 1.1 },
-  semiLarge: { scale: 1.3 },
-  large: { scale: 1.5 },
-  extraLarge: { scale: 1.7 },
+  extraSmall: { scale: 0.85 },
+  small: { scale: 0.9 },
+  semiSmall: { scale: 0.95 },
+  normal: { scale: 1.0 },
+  semiLarge: { scale: 1.05 },
+  large: { scale: 1.1 },
+  extraLarge: { scale: 1.15 },
 };
 
 export { spring, delay, duration, scale };

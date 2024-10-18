@@ -1,7 +1,10 @@
-import { scale, spring } from "@/animation/style";
+import { duration, scale, spring } from "@/animation/style";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import React from "react";
+import PrimaryButton from "../ui/PrimaryButton";
+import BasicButton from "../ui/BasicButton";
+import TextButton from "../ui/TextButton";
 
 type ModalProps = {
   confirm: () => void;
@@ -21,9 +24,11 @@ const modalVariants = {
   end: {
     opacity: 1,
     ...scale.normal,
-    transition: spring.medium,
   },
-  exit: {},
+  exit: {
+    opacity: 0,
+    transition: { ease: "easeInOut", ...duration.short },
+  },
 };
 
 export default function BasicModal({
@@ -68,30 +73,13 @@ export default function BasicModal({
         )}
         {/* action one button */}
         {buttonType === "one" && (
-          <motion.button
-            className="w-full text-end font-bold text-blue-500 active:text-blue-900"
-            onClick={confirm}
-          >
-            {primary}
-          </motion.button>
+          <TextButton primary={primary} confirm={confirm} />
         )}
         {/* action two button */}
         {buttonType === "two" && (
           <div className="relative flex w-full justify-between gap-5">
-            <motion.button
-              className="h-12 w-full rounded-2xl bg-gray-200 font-bold"
-              onClick={cancel}
-              whileTap={scale.semiSmall}
-            >
-              {secondary}
-            </motion.button>
-            <motion.button
-              className="h-12 w-full rounded-2xl bg-black font-bold text-white"
-              onClick={confirm}
-              whileTap={scale.semiSmall}
-            >
-              {primary}
-            </motion.button>
+            <BasicButton secondary={secondary} cancel={cancel} />
+            <PrimaryButton primary={primary} confirm={confirm} />
           </div>
         )}
       </motion.div>
